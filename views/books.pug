@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  div(class="container")
+    h1(class="text-center") Book list
+    
+    table(class="table table-striped table-bordered table-sm" cellspacing="0" width="100%")
+      thead
+        tr
+          th(class="th-sm") Title
+          th(class="th-sm") Reference
+          th(class="th-sm") Category
+          th(class="th-sm") Writting date
+          th(class="th-sm") Edition date
+          th(class="th-sm") Reservation date
+          th(class="th-sm") Borrower
+      tbody
+        each book in bookList
+          tr
+            th(scope="row") #{book.title}
+            td #{book.reference}
+            td #{book.category}
+            td #{book.writtingDate}
+            td #{book.editionDate}
+            td #{book.reservationDate}
+            td #{book.borrower}
+      
+        
+      
+      

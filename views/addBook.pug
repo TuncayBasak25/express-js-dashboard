@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  div(class="d-flex flex-wrap justify-content-center" style="height: 100vh")
+    h1(class="text-center col-12") Hello #{user}, you can add a new book!
+    
+    form(id="userHome", action="/", method="GET")
+    form(id="addBook", action="/addBook", method="POST")
+
+    div(class="w-25 mx-auto")
+      button(type="submit", form="userHome", class="form-control btn btn-lg btn-primary") Return to home
+    
+    div(class="col-12")
+      div(class="w-25 mx-auto")
+        input(type="text", form="addBook", name="title", placeholder="Title", class="form-control my-1")
+        input(type="text", form="addBook", name="reference", placeholder="Reference", class="form-control my-1")
+        select(form="addBook", name="category", class="custom-select my-1")
+          optgroup(label="Category")
+            option(value="roman") Roman
+            option(value="science") Science
+            option(value="dictionnaire") Dictionnaire
+        div(class="my-1")
+          label(class="text-center text-primary w-100") Writting date
+          input(type="date", form="addBook", name="writtingDate", class="form-control")
+        div(class="my-1")
+          label(class="text-center text-primary w-100") Edition date
+          input(type="date", form="addBook", name="editionDate", class="form-control")
+        if error
+          p(class="text-center m-2 text-primary") #{error}
+        button(type="submit", form="addBook", name="addBookButton", value="add", class="form-control btn btn-danger my-2") Add new book
+        
+      
+      
