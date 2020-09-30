@@ -3,9 +3,8 @@ var router = express.Router();
 
 var db = require('../models/index');
 
-/* Enter login page. */
-router.all('/', async function(req, res, next) {
-
+/* GET books page. */
+router.get('/', async function(req, res, next) {
   try
   {
     const actualUser = await db.User.findOne({ where: {sessionId: req.session.id } });
@@ -15,20 +14,9 @@ router.all('/', async function(req, res, next) {
       res.redirect('/');
     }
 
-    next();
-  }
-  catch (e) {
-    console.log(e);
-  }
-});
-
-/* GET login page. */
-router.get('/', async function(req, res, next) {
-  try
-  {
     const bookList = await db.Book.findAll();
 
-    res.render('books', {bookList: bookList});
+    res.render('books', {bookList: bookList, userId: actualUser.dataValues.id});
   }
   catch (e) {
 

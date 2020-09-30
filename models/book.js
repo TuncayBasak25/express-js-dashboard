@@ -12,7 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Book.belongsTo(models.User, {
-        foreingKey: 'userId',
+        as: 'Borrower',
+        onDelete: 'CASCADE'
+      });
+
+      Book.belongsTo(models.User, {
+        as: 'Reserver',
         onDelete: 'CASCADE'
       });
     }
@@ -23,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     writtingDate: DataTypes.DATEONLY,
     editionDate: DataTypes.DATEONLY,
-    reservationDate: DataTypes.DATEONLY
+    reservationDate: DataTypes.DATEONLY,
   }, {
     sequelize,
     modelName: 'Book',

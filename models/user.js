@@ -12,7 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.Book, {
-        foreingKey: 'userId'
+        foreingKey: 'BorrowerId'
+      });
+
+      User.hasMany(models.Book, {
+        foreingKey: 'ReserverId'
       });
     }
   };
