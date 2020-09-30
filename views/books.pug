@@ -13,7 +13,7 @@ block content
           th(class="th-sm") Writting date
           th(class="th-sm") Edition date
           th(class="th-sm") Reservation date
-          th(class="th-sm") Borrow
+          th(class="th-sm") Status
       tbody
         each book in bookList
           tr
@@ -23,16 +23,21 @@ block content
             td #{book.writtingDate}
             td #{book.editionDate}
             td #{book.reservationDate}
-            if book.UserId
-              if book.UserId === userId
+            if book.ReserverId
+              if book.ReserverId === userId
                 td
-                  a(href="borrow?bookId=" + book.id) Return
+                  a(href="bookAction/annulate?bookId=" + book.id ) Annulate
+              else
+                td  Unavailable
+            if book.BorrowerId
+              if book.BorrowerId === userId
+                td
+                  a(href="bookAction/return?bookId=" + book.id) Return
               else
                 td 
-                  a(href="borrow?bookId=" + book.id) Reserve
+                  a(href="bookAction/reserve?bookId=" + book.id) Reserve
             else
               td
-                a(href="borrow?bookId=" + book.id ) Borrow
-        
+                a(href="bookAction/borrow?bookId=" + book.id ) Borrow
       
       

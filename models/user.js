@@ -12,10 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.Book, {
-        as: 'Borrows'
+        as: 'Borrows',
+        foreingKey: 'BorrowerId'
       });
 
       User.hasMany(models.Book, {
+        as: 'Reservations',
         foreingKey: 'ReserverId'
       });
     }
