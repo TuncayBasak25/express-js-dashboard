@@ -7,7 +7,9 @@ var Joi = require('joi');
 
 let userSchema = Joi.object( {
   username: Joi.string().min(3).max(8).required(),
-  password: Joi.string().min(4).max(6).required()
+  email: Joi.string().email({ tlds: { allow: false } }).required(),
+  password: Joi.string().min(4).max(6).required(),
+  passwordConfirm: Joi.string().equal(Joi.ref('password')).required()
 });
 
 /* Enter login page. */
@@ -42,7 +44,7 @@ router.post('/', async function(req, res, next) {
 
     if (valid.error)
     {
-      res.render('register', { error: valid.error.details[0].message });
+      res.render('register', { error: valid.error.details[0].message, body: req.body });
       return;
     }
 
@@ -50,11 +52,19 @@ router.post('/', async function(req, res, next) {
 
     if (user)
     {
-      res.render('register', { error: "This username is already taken.", lastUsername: req.body.username });
+      res.render('register', { error: "This username is already taken.", body: req.body });
       return;
     }
 
-    await db.User.create( {username: req.body.username, password: req.body.password} );
+    const email = await db.User.findOne({ where: {email: req.body.email } });
+
+    if (email)
+    {
+      res.render('register', { error: "This email is already taken.", body: req.body });
+      return;
+    }
+
+    await db.User.create( {username: req.body.username, email: req.body.email, password: req.body.password} );
 
     res.redirect('/login');
   }

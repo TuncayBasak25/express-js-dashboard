@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "expressJS_loginsystem_development",
+    "database": "expressJS_dashboard_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "expressJS_loginsystem_test",
+    "database": "expressJS_dashboard_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "expressJS_loginsystem_production",
+    "database": "expressJS_dashboard_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
