@@ -2,7 +2,7 @@ extends layout
 
 block content
   div(class="d-flex flex-wrap justify-content-center" style="height: 100vh")
-    h1(class="text-center col-12 m-4") Hello #{user}
+    h1(class="text-center col-12 m-4") Hello #{username}
     
     form(id="logout", action="/logout", method="POST")
     form(id="addBook", action="/addBook", method="GET")

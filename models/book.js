@@ -12,13 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Book.belongsTo(models.User, {
-        as: 'Borrower',
-        onDelete: 'CASCADE'
+        as: 'Borrower'
       });
 
       Book.belongsTo(models.User, {
-        as: 'Reserver',
-        onDelete: 'CASCADE'
+        as: 'Reserver'
       });
     }
   };

@@ -13,7 +13,7 @@ router.get('/', async function(req, res, next) {
 
     if (actualUser)
     {
-      res.render('userhome', { user:actualUser.dataValues.username });
+      res.render('userhome', { username: actualUser.dataValues.username });
     }
     else
     {

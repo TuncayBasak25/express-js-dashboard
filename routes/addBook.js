@@ -26,6 +26,8 @@ router.all('/', async function(req, res, next) {
       res.redirect('/');
     }
 
+    req.user = actualUser;
+
     next();
   }
   catch (e) {
@@ -35,7 +37,7 @@ router.all('/', async function(req, res, next) {
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('addBook');
+  res.render('addBook', { user: req.user });
 });
 
 /* POST login page. */
@@ -44,11 +46,9 @@ router.post('/', async function(req, res, next) {
   {
     const valid = bookSchema.validate(req.body);
 
-    console.log(req.body.writtingDate);
-
     if (valid.error)
     {
-      res.render('addBook', { error: valid.error.details[0].message });
+      res.render('addBook', { error: valid.error.details[0].message, user: req.user });
       return;
     }
 
@@ -60,7 +60,7 @@ router.post('/', async function(req, res, next) {
       editionDate: req.body.editionDate
     });
 
-    res.render('addBook', { error: `Book ${req.body.title} has been added successfully.` });
+    res.render('addBook', { error: `Book ${req.body.title} has been added successfully.`, user: req.user });
   }
   catch (e) {
     console.log(e);

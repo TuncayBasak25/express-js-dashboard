@@ -1,0 +1,7 @@
+form(id="login", action="/login", method="POST")
+
+input(type="text", form="login", name="username", placeholder="Username", value=lastUsername ? lastUsername : '', class="m-2 form-control")
+input(type="password", form="login", name="password", placeholder="Password", class="m-2 form-control")
+if error
+  p(class="text-center m-2 text-primary") #{error}
+button(type="submit", form="login", class="m-2 form-control btn btn-lg btn-primary") Login
