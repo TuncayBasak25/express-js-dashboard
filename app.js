@@ -89,7 +89,7 @@ app.use('/', indexRouter);
 // app.use('/logout', logoutRouter);
 // app.use('/users', usersRouter);
 
-routeList.forEach((router, i) => {console.log(routeList.length);
+routeList.forEach((router, i) => {
   app.use('/' + fileList[i], router);
 });
 
