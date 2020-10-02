@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="/javascript/editOnClick.js")
   div(class="container")
     h1(class="text-center") Book list
     
@@ -39,14 +40,30 @@ block content
           th(class="th-sm")
             a(class="btn w-100" href="") Status
       tbody
+        form(id="editBook" action="books/editBook" method="post")
+          input(type="submit" style="display: none")
         each book in bookList
+          input(form="editBook" type="hidden" name='id' + book.id value=book.id)
           tr
-            th(scope="row") #{book.title}
-            td #{book.reference}
-            td #{book.category}
-            td #{book.writtingDate}
-            td #{book.editionDate}
-            td #{book.reservationDate}
+            th(scope="row" onclick="editOnClick(this)")
+              span(style="display: inline") #{book.title}
+              input(form="editBook" type="text" name="title_" + book.id val=book.title style="display: none")
+            td(scope="row" onclick="editOnClick(this)")
+              span(style="display: inline") #{book.reference}
+              input(form="editBook" type="text" name="reference_" + book.id val=book.reference style="display: none")
+            td(scope="row" onclick="editOnClick(this)")
+              span(style="display: inline") #{book.category}
+              input(form="editBook" type="text" name="category_" + book.id val=book.category style="display: none")
+            td(scope="row" onclick="editOnClick(this)")
+              span(style="display: inline") #{book.writtingDate}
+              input(form="editBook" type="date" name="writtingDate_" + book.id val=book.writtingDate style="display: none")
+            td(scope="row" onclick="editOnClick(this)")
+              span(style="display: inline") #{book.editionDate}
+              input(form="editBook" type="date" name="editionDate_" + book.id val=book.editionDate style="display: none")
+            td(scope="row" onclick="editOnClick(this)")
+              span(style="display: inline") #{book.reservationDate}
+              input(form="editBook" type="date" name="reservationDate_" + book.id val=book.reservationDate style="display: none")
+
             if !book.BorrowerId && !book.ReserverId
               td
                 a(href="bookAction/borrow?bookId=" + book.id ) Borrow

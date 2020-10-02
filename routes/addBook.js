@@ -37,7 +37,7 @@ router.all('/', async function(req, res, next) {
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('addBook', { user: req.user });
+  res.render('addBook', { user: req.user, categories: db.Book.CATEGORIES });
 });
 
 /* POST login page. */
