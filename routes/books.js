@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('../models/index');
-var Sequelize = require('Sequelize');
+var Sequelize = require('sequelize');
 var Op = Sequelize.Op
 var Joi = require('joi');
 
