@@ -172,17 +172,14 @@ router.post('/editBook', async function(req, res, next) {
       let name = input[0];
       let value = input[1];
 
-      if (value !== '')
+      if (name.slice(0, 2) === 'id')
       {
-        if (name.slice(0, 2) === 'id')
-        {
-          queries.push([name.slice(2), {} ]);
-        }
-        else
-        {
-          name = name.split('_')[0];
-          queries[queries.length-1][1][name] = value;
-        }
+        queries.push([name.slice(2), {} ]);
+      }
+      else
+      {
+        name = name.split('_')[0];
+        queries[queries.length-1][1][name] = value;
       }
     });
 

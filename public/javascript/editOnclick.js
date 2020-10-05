@@ -10,6 +10,7 @@ function editOnClick(context)
     context.firstElementChild.style.display = 'none';
     context.lastElementChild.style.display = 'inline';
     context.lastElementChild.value = context.firstElementChild.textContent;
+    context.lastElementChild.removeAttribute('disabled');
     context.lastElementChild.focus();
     context.lastElementChild.select();
   }

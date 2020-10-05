@@ -47,22 +47,22 @@ block content
           tr
             th(scope="row" onclick="editOnClick(this)")
               span(style="display: inline") #{book.title}
-              input(form="editBook" type="text" name="title_" + book.id val=book.title style="display: none")
+              input(form="editBook" type="text" name="title_" + book.id val=book.title style="display: none" disabled=true)
             td(scope="row" onclick="editOnClick(this)")
               span(style="display: inline") #{book.reference}
-              input(form="editBook" type="text" name="reference_" + book.id val=book.reference style="display: none")
+              input(form="editBook" type="text" name="reference_" + book.id val=book.reference style="display: none" disabled=true)
             td(scope="row" onclick="editOnClick(this)")
               span(style="display: inline") #{book.category}
-              input(form="editBook" type="text" name="category_" + book.id val=book.category style="display: none")
+              input(form="editBook" type="text" name="category_" + book.id val=book.category style="display: none" disabled=true)
             td(scope="row" onclick="editOnClick(this)")
               span(style="display: inline") #{book.writtingDate}
-              input(form="editBook" type="date" name="writtingDate_" + book.id val=book.writtingDate style="display: none")
+              input(form="editBook" type="date" name="writtingDate_" + book.id val=book.writtingDate style="display: none" disabled=true)
             td(scope="row" onclick="editOnClick(this)")
               span(style="display: inline") #{book.editionDate}
-              input(form="editBook" type="date" name="editionDate_" + book.id val=book.editionDate style="display: none")
+              input(form="editBook" type="date" name="editionDate_" + book.id val=book.editionDate style="display: none" disabled=true)
             td(scope="row" onclick="editOnClick(this)")
               span(style="display: inline") #{book.reservationDate}
-              input(form="editBook" type="date" name="reservationDate_" + book.id val=book.reservationDate style="display: none")
+              input(form="editBook" type="date" name="reservationDate_" + book.id val=book.reservationDate style="display: none" disabled=true)
 
             if !book.BorrowerId && !book.ReserverId
               td
