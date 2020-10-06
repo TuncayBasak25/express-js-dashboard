@@ -17,7 +17,7 @@ block content
         select(form="addBook", name="category", class="custom-select my-1")
           optgroup(label="Category")
             for category in categories
-              option(value=category) category.charAt(0).toUpperCase() + category.slice(1)
+              option(value=category) #{category.charAt(0).toUpperCase() + category.slice(1)}
         div(class="my-1")
           label(class="text-center text-primary w-100") Writting date
           input(type="date", form="addBook", name="writtingDate", class="form-control")
