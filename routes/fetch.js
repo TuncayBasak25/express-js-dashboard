@@ -21,6 +21,19 @@ router.get('/', async function(req, res, next) {
 });
 
 
+router.get('/:title', async function(req, res, next) {
+  try
+  {
+    const book = await db.Book.findAll({ where: { title: req.query.title } });
+
+    res.send(book);
+  }
+  catch (e) {
+    console.log(e);
+  }
+});
+
+
 
 
 module.exports = router;
