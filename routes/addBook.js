@@ -48,7 +48,7 @@ router.post('/', async function(req, res, next) {
 
     if (valid.error)
     {
-      res.render('addBook', { error: valid.error.details[0].message, user: req.user });
+      res.render('addBook', { error: valid.error.details[0].message, username: req.user.dataValues.username });
       return;
     }
 
