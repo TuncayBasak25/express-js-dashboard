@@ -3,6 +3,9 @@ var router = express.Router();
 
 var db = require('../models/index');
 
+var cors = require('cors');
+
+router.use(cors());
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
@@ -17,7 +20,6 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-router.get('')
 
 
 
