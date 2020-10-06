@@ -8,7 +8,7 @@ var db = require('../models/index');
 router.get('/', async function(req, res, next) {
   try
   {
-    const books = db.Book.findAll();
+    const books = await db.Book.findAll();
 
     res.send(books);
   }
