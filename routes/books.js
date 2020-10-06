@@ -186,19 +186,18 @@ router.post('/editBook', async function(req, res, next) {
       }
     });
 
-    console.log(queries);
-
-    queries.forEach((query, i) => {
+    for (var i = 0; i < queries.length; i++) {
+      const query = queries[i];
       if (Object.entries(query[1]).length !== 0)
       {
-        db.Book.update(
+        await db.Book.update(
           query[1],
           {
             where: { id: query[0] }
           }
         )
       }
-    });
+    }
 
     res.redirect('/books');
   }
