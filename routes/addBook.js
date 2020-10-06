@@ -60,7 +60,7 @@ router.post('/', async function(req, res, next) {
       editionDate: req.body.editionDate
     });
 
-    res.render('addBook', { error: `Book ${req.body.title} has been added successfully.`, user: req.user });
+    res.render('addBook', { error: `Book ${req.body.title} has been added successfully.`, username: req.user.dataValues.username });
   }
   catch (e) {
     console.log(e);
