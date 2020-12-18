@@ -97,3 +97,6 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+const webSocket = require('../webSocket/webSocket');
+const wsServer = webSocket(server);
