@@ -5,7 +5,8 @@ const wsServer = new ws.Server( { noServer: true } );
 
 const methods = {
   open: require('./methods/open'),
-  message: require('./methods/message')
+  message: require('./methods/message'),
+  key: require('./method/key')
 };
 
 const webSocket = server => {
